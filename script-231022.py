@@ -93,14 +93,14 @@ time.sleep(1)
 
 # 담당 업무 선택
 # duties class가 유일하므로 clickable 사용
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 duties = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'duties')))
 dutiesButton = duties.find_element(By.TAG_NAME, 'button')
 dutiesButton.click()
 time.sleep(1)
 
 # 업무명 검색
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 dutiesInput = dutiesButton.find_element(By.TAG_NAME, 'input')
 dutiesInput.click()
 dutiesInput.send_keys('통번역')
@@ -108,11 +108,11 @@ dutiesInput.send_keys(Keys.ENTER)
 time.sleep(1)
 
 # 불러온 담당 duties class 중 첫 번째 형제 찾기
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 dutiesDropDown = dutiesButton.find_elements(By.XPATH, 'following-sibling::*[1]')[0]
 
 # 첫 번째 형제의 자식들 모두 찾기
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 dutiesDropDownChildren = dutiesDropDown.find_elements(By.XPATH, '*')
 
 # 첫 번째 형제의 첫 번째 자식 찾기
@@ -123,40 +123,40 @@ dutiesButtons = dutiesDropDownChildren[1]
 
 # '통번역' 버튼 찾아 클릭
 # '통번역' 텍스트로 찾기
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 translation = dutiesList.find_element(By.XPATH, "//button[contains(text(), '통번역')]")
 translation.click()
 time.sleep(1)
 
 # 검색 후 검색어 지우기 버튼 찾아 클릭(dutiesButton 닫히지 않도록)
 # dutiesInput의 첫 번째 형제
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 deleteButton = dutiesInput.find_elements(By.XPATH, 'following-sibling::*[1]')[0]
 deleteButton.click()
 time.sleep(1)
 
 # dutiesButton 클릭
 # dutiesButton의 첫 번째 형제
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 dutiesButton.click()
 dutiesDropDown = dutiesButton.find_elements(By.XPATH, 'following-sibling::*[1]')[0]
 time.sleep(1)
 
 # '스타일리스트' 버튼 찾아 클릭
 # '스타일리스트' 텍스트로 찾기
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 stylelist = dutiesList.find_element(By.XPATH, "//button[contains(text(), '스타일리스트')]")
 stylelist.click()
 time.sleep(1)
 
 # 등록 버튼 클릭
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 submit = dutiesButtons.find_element(By.XPATH, "//button[contains(text(), '등록')]")
 submit.click()
 time.sleep(1)
 
 # 신청 취소 클릭
-# 정확하게 지정하기 위해 fint_elements 사용
+# 정확하게 지정하기 위해 find_element 사용
 cancel = wait.until(EC.element_to_be_clickable((By.XPATH, "//button/span[contains(text(), '신청 취소')]")))
 cancel.click()
 time.sleep(3)
